@@ -3,6 +3,7 @@ var typescript = Npm.require('typescript');
 var COMPILER_OPTIONS = {
     module:                     typescript.ModuleKind.System,
     target:                     typescript.ScriptTarget.ES5,
+    jsx:                        typescript.JsxEmit.React,
     emitDecoratorMetadata:      true,
     experimentalAsyncFunctions: true,
     inlineSourceMap:            true,
@@ -46,8 +47,8 @@ function processFile(file) {
     var lastHash = fileContentsCache[inputFile] && fileContentsCache[inputFile].hash;
     var currentHash = file.getSourceHash();
 
-    var moduleName = inputFile.replace(/\\/g, '/').replace('.ts', '');
-    var outputFile = inputFile.replace('.ts', '.js');
+    var moduleName = inputFile.replace(/\\/g, '/').replace(/.tsx?$/, '');
+    var outputFile = inputFile.replace(/.tsx?$/, '.js');
 
     // Only compile files that have changed since the last run
     if (!lastHash || lastHash !== currentHash ) {
@@ -94,7 +95,7 @@ function processFile(file) {
 }
 
 Plugin.registerCompiler({
-    extensions: ['ts'],
+    extensions: ['ts', 'tsx'],
     filenames:  []
 
 }, function () {
