@@ -1,5 +1,5 @@
 Package.describe({
-    name:          'kthompson:typescript',
+    name:          'mrunleaded:typescript',
     version:       '0.0.9',
     summary:       'Typescript compiler for Meteor 1.2',
     git:           'https://github.com/kthompson/meteor-typescript',
