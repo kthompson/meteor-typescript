@@ -6,7 +6,7 @@ The TypeScript Meteor plugin caches the generated code between builds to speed u
 
 ### Install
 
-    meteor add pbastowski:typescript
+    meteor add mrunleaded:typescript
 
 #### Need SystemJS?
 
